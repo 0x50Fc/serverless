@@ -41,6 +41,7 @@ export interface LessField {
     required: boolean
     typeSymbol?: string
     isArray: boolean
+    pattern?: string
 }
 
 export interface LessRequest {
@@ -177,6 +178,12 @@ function lessField(node: ts.InterfaceDeclaration | ts.ClassDeclaration, program:
                     isArray: false
                 };
 
+                for (let tag of symbol.getJsDocTags()) {
+                    if (tag.name == "pattern" && tag.text !== undefined) {
+                        field.pattern = tag.text
+                    }
+                }
+
                 lessFieldType(member.type, program, field, createSymbol);
 
                 fields.push(field);
@@ -282,7 +289,7 @@ function lessObject(symbol: ts.Symbol, node: ts.ClassDeclaration | ts.InterfaceD
 
     return {
         title: title,
-        name : symbol.name,
+        name: symbol.name,
         fields: fields
     };
 }

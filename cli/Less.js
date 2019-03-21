@@ -124,6 +124,11 @@ function lessField(node, program, fields, keySet, createSymbol) {
                     required: member.questionToken === undefined,
                     isArray: false
                 };
+                for (let tag of symbol.getJsDocTags()) {
+                    if (tag.name == "pattern" && tag.text !== undefined) {
+                        field.pattern = tag.text;
+                    }
+                }
                 lessFieldType(member.type, program, field, createSymbol);
                 fields.push(field);
             }
