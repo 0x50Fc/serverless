@@ -1,0 +1,26 @@
+{
+  "name": "sless-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "sless-cli": "main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hailongz/serverless.git"
+  },
+  "author": "zhanghailong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hailongz/serverless/issues"
+  },
+  "homepage": "https://github.com/hailongz/serverless#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "typescript": "^3.3.4000"
+  }
+}
